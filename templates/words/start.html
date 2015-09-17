@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<head>
+
+</head>
+<body>
+
+<h2>Wordify</h2>
+
+<audio id = 'audio_word' controls = 'controls' src ="" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+<form id='my_form' method = 'POST'>
+<input type = 'text' id = 'input_word' name = 'input_word' value = ''/>
+<input type="submit" id="submit_button" value='Next'/>
+<div id="myDiv"></div>
+ </form>
+<script src="{% static "js/jquery-2.1.4.js" %}"></script>
+<script type = 'text/javascript'>
+var SANSWER_POST = "{% url 'sanswer_post' %}"
+</script>
+<script src="{% static "js/words-jquery.js" %}"></script>
+</body>
+</html>

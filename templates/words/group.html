@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title> Group </title>
+</head>
+<body>
+	<a href = '{% url "delete_all_keys" %}'> DELETE ALL KEYS (AT YOUR OWN RISK) </a>
+	<p> Welcome, <b id = 'user'>{{user.username}}</b>!</p>
+	<div id = 'game_elements' hidden>
+
+		<audio id = 'audio_word' controls = 'controls' src ="/static/audio/test.mp3" type="audio/mpeg" >
+			Your browser does not support the audio element.
+		</audio>
+
+		<form id='my_form' method = 'POST' action = "{% url 'ganswer_post'">
+			<input type = 'text' id = 'input_word' name = 'input_word' value = ''/>
+			<input type="submit" id="submit_button" value='Next'/>
+			<div id="myDiv"></div>
+		</form>
+
+	</div>
+	<div id = 'group_choice' >
+		<form id = 'new_group_form' method = 'post' action = "{% url 'new_group' %}">
+			Enter the new or existing group name:
+			<input id = 'new_group' type = 'text' />
+			<select id = 'group_select' >
+			</select>
+			<b id = 'group_list_updated' hidden> &lt;---- updated!</b>
+			<br>
+			Enter the no. of words:
+			<input type = 'text' id = 'totwords' value = '5'/><br>
+			Enter the no. of members:
+			<input type = 'text' id = 'totmembers' value = '2'/><br>
+			<input id = 'new_group_button' type = 'submit' value = 'create/join group'/>
+		</form>
+		<br>
+	</div>
+
+	<a id = 'redirection_url' href = '' hidden> <h1>Go to results!</h1> </a>
+
+	<div id = 'pre_game_elements' hidden>
+		<h1 id = 'session_start_notice'> Session will automatically start when users will connect </h1>
+		<input type='button' id = 'delete_group' value = 'Delete group' hidden/>
+		<br>
+		<p> Group specific messages will appear here!</p>
+		<ol id = 'status_messages'>
+
+
+		</ol>
+	</div>
+	<br>
+	<p> general messages will appear here!</p>
+	<ol id = 'broadcast_messages'>
+
+	</ol>
+
+	<input type = 'button' id = 'nullify' value = 'nullify'/>
+	<input type = 'button' id = 'test_publish' value = 'test'/>
+	<script src = '{% static "js/jquery-2.1.4.js" %}'></script>
+	<script src = '{% static "js/ws4redis.js" %}'></script>
+	<script type = 'text/javascript'> 
+		var WEBSOCKET_URI = "{{ WEBSOCKET_URI }}";
+		//this variable is used to create a socket connection
+
+		var GANSWER_POST = "{% url 'ganswer_post' %}";
+		//the complete game logic is controlled by this url
+
+		var GINFO = "{% url 'ginfo' %}";
+		//to get the information regarding groups
+
+		var GDELETE = "{% url 'gdelete' %}";
+		// to delete the group
+
+		var WS4REDIS_HEARTBEAT = {{ WS4REDIS_HEARTBEAT }};
+		//optional as of now, notice no double quotes
+
+		var MY_PREFIX = "{{MY_PREFIX}}";
+		//used to create broadcast socket
+
+		var FACILITY = "";
+		// used to create group specific socket
+
+		var ws4redis;
+		//group specific variable
+
+	</script>
+	<script src = '{% static "js/group-jquery.js" %}'></script>
+
+</body>
+</html>
