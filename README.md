@@ -23,3 +23,4 @@ su pw is in comment
 10. enter deactivate to leave the virtualenv and workon myvenv to get it back!
 
 P.S. there is no need as such for virtual environment but it makes the life much simpler!
+# wordify-master
