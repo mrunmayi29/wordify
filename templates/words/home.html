@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+ {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
+   <link rel="stylesheet" href="{% static "font-awesome/css/font-awesome.min.css" %}" />
+   <link rel="stylesheet" href="{% static "css/animate.css" %}"/>
+   <!-- <link rel="stylesheet" href="{% static "css/style.css" %}" />
+    
+    <script src="{% static "js/jquery-2.1.4.js" %}"></script>-->
+<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
+ <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+  <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+  <link rel="stylesheet" href="{% static "css/style.css" %}" />
+<!--<link rel="stylesheet" href="/home/mrunmayi/Desktop/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/home/mrunmayi/Desktop/bootstrap-3.3.5-dist/css/style.css">
+<script src="/home/mrunmayi/Desktop/bootstrap-3.3.5-dist/js/finaljquery.js"></script>
+<script src="/home/mrunmayi/Desktop/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>-->
+
+<style>
+body{
+//background: url("{% static "images/button.jpg" %}");
+background-size: cover;
+}
+#type{
+//background: url("{% static "images/man-s-hands-typing-on-laptop-keyboard.jpg" %}");
+//background-size: cover;
+}
+#sessions{
+background: url("{% static "images/button.jpg" %}");
+background-size: cover;
+}
+
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 60%;
+      margin: auto;
+  }
+
+</style>
+</head>
+<body data-spy="scroll" id="yo">
+
+
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#07071e;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><i style="font-family:Josefin Slab; color:#FFFFFF;">Wordify</i></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="#yo" style="color:#FFFFFF;" class="page-scroll"><i class="fa fa-home"></i><b> Home</b></a></li>
+              <li><a href="#sessions" style="color:#FFFFFF;" class="page-scroll"><b>Sessions</b></a></li>
+              <li><a href="#about" style="color:#FFFFFF;" class="page-scroll"><b>About</b></a></li>
+              
+              
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="padding-right:10px;">
+              <!--<li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>-->
+              {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}" style="color:#FFFFFF;">Log out</a></li>      
+                        {% else %}
+                      
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-hand-o-right"></i><span class="caret"></span></a>
+                <ul class="dropdown-menu drp">
+                  <li><a href="{% url 'register' %}"><b>Sign Up</b></a></li>
+                  <li><a href="{% url 'login' %}"><b>Sign In</b></a></li>
+                  <!--<li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>-->
+                </ul>
+              </li>
+            </ul>  {% endif %}
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+ 
+    <div class="container-fluid" id="type">
+  <center><h1 class="hf animated fadeIn" data-animation-delay="100" data-animation="fadeIn" style="color:black;">WORDIFY</h1></center>
+
+
+<!--<div class="row"><div class="col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2"><center><p>Free, responsive app to develop your vocabulary ,play games , win prizes,have fun!!!</p></center></div></div>-->
+
+<div class="container-fluid">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="{% static "images/man-s-hands-typing-on-laptop-keyboard.jpg" %}" alt="Chania" width="460" height="345">
+      </div>
+
+      <div class="item">
+        <img src="{% static "images/imagesu.jpg" %}" alt="Chania" width="460" height="345">
+      </div>
+    
+      <div class="item">
+        <img src="{% static "images/head.jpg" %}" alt="Flower" width="460" height="345">
+      </div>
+
+      <div class="item">
+        <img src="{% static "images/imagesl.jpg" %}" alt="Flower" width="460" height="345">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left " style="color:blue;" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" style="color:blue;" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+<center><a href="#about" class="page-scroll btn btn-circle">
+    <i class="fa fa-angle-double-down animated"></i></a></center></div>
+
+
+
+
+
+ <div id="about" class="container-fluid text-center" style="padding-top:70px;background-color:black;padding-bottom:100px;">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2" style="font-size:20px;">
+                <h2>ABOUT WORDIFY</h2><br/>
+                 <hr style="color:#FFFFFF; width:90%; height:1px;"><br/>
+
+                <p><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WORDIFY is <b style="color:blue;">FREE</b>, user friendly and online platform created to develop your verbal ability and enhance word power.</p><br/>
+                <p><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;&nbsp;&nbsp;Here, you can test your ability to spell the words. We will help you to enhance your listening skills in a <b style="color:blue;">PROPER ENGLISH ACCENT</b>. WORDIFY supports mock tests for your practice.</p><br/>
+                <p><i class="fa fa-paper-plane" style="margin-left=10px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;We provide a <b style="color:blue">REAL TIME</b> scenario in which students can compete simultaneously with each other.</p><br/>
+            </div>
+        </div>
+    </div>
+
+
+<div class="container" id="type1" style="padding-top:70px;padding-bottom:100px;">
+  <center><h1 class="hf animated fadeIn" data-animation-delay="100" data-animation="fadeIn" style="color:black;">!!! LISTEN, READ, TYPE !!!</h1></center>
+  <br/>
+    <div class="row">
+
+    <div class="col-md-4 text-center animated flip">
+    <div style="background-color:#090833;padding-top:10px;padding-bottom:10px;"><i class="fa fa-star fa-2x"></i>
+    <h4 class="hf">FUN AND STUDY TOGETHER</h4></div>
+    <div class="yoyoyo" style="padding-bottom:150px;">
+    <p>Play game and remember spellings of the words and meanings as well.</p>
+    </div></div>
+    
+    
+    <div class="col-md-4  text-center  animated flip" data-animation-delay="700">
+     <div style="background-color:#3a071f;padding-top:10px;padding-bottom:10px;padding-bottom:10px;"><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i>
+    <h4 class="hf">HIGH FREQUENCY GRE WORDS</h4></div>
+    <div class="yoyoyo" style="padding-bottom:128px;">
+    <p>Learn and remember 333 high frequency gre words easily we have meanings also.</p>
+    </div></div>
+    
+    
+
+         <div class="col-md-4 text-center animated flip" data-animation-delay="1000">
+     <div style="background-color:#142b02;padding-top:10px;padding-bottom:10px;"><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i>
+    <h4 class="hf">COMPETE WITH OTHERS</h4></div>
+    <div class="yoyoyo" style="padding-bottom:175px;">
+    <p class="animated bounceInLeft">Make a group of friends and play games with them.</p>
+    </div></div>
+    </div>
+    <br/>
+   
+</div>
+
+
+
+<!--<div class="container-fluid" id="type1" style="color:black;padding-top:70px;">
+  <center><h1 class="hf animated fadeIn" data-animation-delay="100" data-animation="fadeIn">!!! LISTEN, READ, TYPE !!!</h1></center>
+  <br/>
+    <div class="row">
+
+    <div class="col-md-3 col-md-offset-1 text-center animated flip">
+    <i class="fa fa-star fa-2x"></i>
+    <h4 class="hf">FUN AND STUDY TOGETHER</h4>
+    <hr style="color:#FFFFFF; width:90%; height:1px;">
+    <p>Play game and remember spellings of the words and meanings as well.</p>
+    </div>
+    </div>
+    <br/>
+    <div class="row">
+     <div class="col-md-3 col-md-offset-4 text-center  animated flip" data-animation-delay="700">
+     <i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i>
+    <h4 class="hf">HIGH FREQUENCY GRE WORDS</h4>
+    <hr style="color:#FFFFFF; width:90%; height:1px;">
+    <p>Learn and remember 333 high frequency gre words easily we have meanings also.</p>
+    </div>
+    </div>
+    <br/>
+    <div class="row">
+         <div class="col-md-3 col-md-offset-7 text-center animated flip" data-animation-delay="1000">
+     <div><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i></div>
+    <h4 class="hf">COMPETE WITH OTHERS</h4>
+    <hr style="color:#FFFFFF; width:90%; height:1px;">
+    <p class="animated bounceInLeft">Make a group of friends and play games with them.</p>
+    </div>
+    </div>
+    <br/>
+   
+</div>-->
+
+
+
+
+
+  <!--<p>The .dropdown class is used to indicate a dropdown menu.</p>
+  <p>Use the .dropdown-menu class to actually build the dropdown menu.</p>
+  <p>To open the dropdown menu, use a button or a link with a class of .dropdown-toggle and data-toggle="dropdown".</p>                                          
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">HTML</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+    </ul>
+  </div>-->
+
+
+
+
+
+
+<div class="container-fluid" id="sessions">
+<center><h2 class="hf lee">PLAY IN TWO SESSIONS</h2></center>
+ <hr style="width: 80%; color: #FFFFFF; height: 2px;" />
+ <br/>
+<div class="row">
+<div class="col-md-4 col-md-offset-1">
+<center><h2 class="hf lee"><i class="fa fa-book"></i> PRACTICE</h2></center>
+<br/>
+<!--<hr style="width: 80%; color: #FFFFFF; height: 1px;" />-->
+<br/>
+<div class="p"style="padding-left:20px;">
+<p class="lee"><i class="fa fa-fighter-jet lee"></i>  Practice section will help you to remember the words.</p>
+<p class="lee"><i class="fa fa-fighter-jet lee"></i>  You can select number of words you want to practice.</p>
+<p class="lee"><i class="fa fa-fighter-jet lee"></i>  Click on the START Button to start practice.</p>
+<p class="lee"><i class="fa fa-fighter-jet lee"></i>  First letter of the word should be capital.</p>
+{% if user.is_authenticated %}
+                      
+                        <div><center><button type="submit" class="btn btn-info" name="submit" onclick="mydialogueFunction()" style="margin-top:12%;"><b>Practice  </b><i class="fa fa-user fa-2x"></i></button></center></div>
+                        <div id="nowords" hidden>
+                            <hr style="width: 80%; color: black; height: 2px; background-color:black;" />
+                            <form id='my_form' method = 'POST' action = "{% url 'start_single' %}">
+                            <div><center><b>Enter no of words:</b> <input type="text" id="totwords" name="totwords" required placeholder="No of words" style="width:50%;"></center></div><br/>
+                            <div><center><button type="submit" class="btn btn-info" style="position:relative;width:122px"><b>Start </b><i class="fa fa-user fa-lg"></i></a></button></center></div>
+                                </form>
+                        </div>
+                        {% else %}
+                        {% endif %}
+</div>
+
+</div>
+ 
+
+<div class="col-md-4 col-md-offset-2">
+<br/><br/>
+<i class="fa fa-book" style="font-size:250px;"></i><i class="fa fa-pencil" style="font-size:100px;"></i>
+</div>
+</div>
+<br/><br/><br/>
+<div class="row">
+<div class="col-md-4 col-md-offset-1">
+<br/><br/>
+ <!--<center><i class="fa fa-lock" style="font-size:220px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right fa-2x"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-unlock-alt" style="font-size:120px;"></i></center>-->
+ <img class="y" width="50px" height="50px"></img>
+ <i class="k fa fa-lock" style="font-size:260px; padding-left:50px;"></i>
+ 
+</div>
+<div class="col-md-4 col-md-offset-1">
+<center><h2 class="hf lee"><i class="fa fa-newspaper-o lee"></i> COMPETITION</h2></center>
+<br/>
+<!--<hr style="width: 80%; color: #FFFFFF; height: 1px;" />-->
+<br/>
+<div class="p" style="padding-left:20px;">
+<p class="lee"><i class="fa fa-fighter-jet"></i>  Start competition by creating new group or join existing grp..</p>
+<p class="lee"><i class="fa fa-fighter-jet"></i>  Select no of words and group members to create group.</p>
+<p class="lee"><i class="fa fa-fighter-jet"></i>  Competition will start after all participants are logged in .</p>
+<p class="lee"><i class="fa fa-fighter-jet"></i>  First letter of the word should be capital.</p>
+{% if user.is_authenticated %}
+                        <div><center><a href = "{% url 'group' %}" button type="submit" class="btn btn-info" name="submit" style="margin-top:5%;"><b>Competition  </b><i class="fa fa-users fa-2x"></i></button></a></center></div>
+                        {% else %}
+                        {% endif %}
+</div>
+</div>
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+<!--<div class="container-fluid" id="sessions">
+<center><h2 class="hf lee">PLAY IN TWO SESSIONS</h2></center>
+ <hr style="width: 80%; color: #FFFFFF; height: 2px;" />
+ <br/>
+<div class="row">
+<div class="col-md-4 col-md-offset-1">
+<center><h2 class="hf lee"><i class="fa fa-book"></i> PRACTICE</h2></center>
+<br/>-->
+<!--<hr style="width: 80%; color: #FFFFFF; height: 1px;" />-->
+<!--<br/>
+<div class="p"style="padding-left:20px;">
+<p class="lee"><i class="fa fa-fighter-jet lee"></i>  Practice section will help you to remember the words.</p>
+<p class="lee"><i class="fa fa-fighter-jet lee"></i>  You can select number of words you want to practice.</p>
+<p class="lee"><i class="fa fa-fighter-jet lee"></i>  Click on the START Button to start practice.</p>
+<p class="lee"><i class="fa fa-fighter-jet lee"></i>  First letter of the word should be capital.</p>
+{% if user.is_authenticated %}
+                      
+                        <div><center><button type="submit" class="btn btn-info" name="submit" onclick="mydialogueFunction()" style="margin-top:12%;"><b>Practice  </b><i class="fa fa-user fa-2x"></i></button></center></div>
+                        <div id="nowords" hidden>
+                            <hr style="width: 80%; color: black; height: 2px; background-color:black;" />
+                            <form id='my_form' method = 'POST' action = "{% url 'start_single' %}">
+                            <div><center><b>Enter no of words:</b> <input type="text" id="totwords" name="totwords" required placeholder="No of words" style="width:50%;"></center></div><br/>
+                            <div><center><button type="submit" class="btn btn-info" style="position:relative;right:3%;width:122px"><b>Start </b><i class="fa fa-user fa-lg"></i></a></button></center></div>
+                                </form>
+                        </div>
+                        {% else %}
+                        {% endif %}
+</div>
+
+</div>
+ 
+
+<div class="col-md-4 col-md-offset-1">
+<center><h2 class="hf lee"><i class="fa fa-newspaper-o lee"></i> COMPETITION</h2></center>
+<br/>-->
+<!--<hr style="width: 80%; color: #FFFFFF; height: 1px;" />-->
+<!--<br/>
+<div class="p" style="padding-left:20px;">
+<p class="lee"><i class="fa fa-fighter-jet"></i>  Start competition by creating new group or join existing grp..</p>
+<p class="lee"><i class="fa fa-fighter-jet"></i>  Select no of words and group members to create group.</p>
+<p class="lee"><i class="fa fa-fighter-jet"></i>  Competition will start after all participants are logged in .</p>
+<p class="lee"><i class="fa fa-fighter-jet"></i>  First letter of the word should be capital.</p>
+{% if user.is_authenticated %}
+                        <div><center><a href = "{% url 'group' %}" button type="submit" class="btn btn-info" name="submit" style="margin-top:5%;"><b>Competition  </b><i class="fa fa-users fa-2x"></i></button></a></center></div>
+                        {% else %}
+                        {% endif %}
+</div>
+</div>
+</div>
+</div>-->
+
+
+
+<div class="footer" id="foote">
+<br/>
+<div class="row">
+<div class="col-md-3 col-xs-12 col-md-offset-1">
+<br/>
+<ul class="list-unstyled">
+<li>Home</li>
+<li>Sessions</li>
+<li>Practice</li>
+<li>Compete</li>
+</ul>
+</div>
+<div class="col-md-7 col-xs-12">
+<h3 class="hf">WORDIFY</h3>
+<p>Wordify teaches you to remember difficult words in english. It also gives meanings for those words. You can create a group or join group and participate in competition.</p>
+
+</div>
+
+
+</div>
+</div>
+</body>
+<script src="{% static "js/jquery.easing.min.js" %}"></script>
+<script src="{% static "js/jquery-2.1.4.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script type = 'text/javascript'>
+
+                function mydialogueFunction() {
+   //var person = prompt("Please enter number of words", "");
+    $('#nowords').show();
+    }
+
+
+
+
+  </script>
+  <script>/*$(function () {
+    var body = $('body');
+    var backgrounds = [
+      'url("{% static "images/images.jpeg" %}")', 
+      'url("{% static "images/button.jpg" %}")'];
+    var current = 0;
+
+    function nextBackground() {
+        body.css(
+            'background',
+        backgrounds[current = ++current % backgrounds.length]);
+
+
+        setTimeout(nextBackground, 5000);
+    }
+    setTimeout(nextBackground, 5000);
+    body.css('background', backgrounds[0]);
+});*/</script>
+
+
+<script>
+/*$(document).ready(function n(){
+
+var urlAbsolute="http://f8rentals.com/wp-content/uploads/2015/03/IMG_0067ft.jpg?189db0" ;
+    $(".y").attr("src", urlAbsolute)
+setTimeout(function newf(){
+var ur="http://www.gettyimages.in/gi-resources/images/Homepage/Category-Creative/UK/UK_Creative_462809583.jpg";
+  $(".y").attr("src", ur)
+}, 2000);
+setTimeout(n,5000);
+
+});*/
+</script>
+
+
+<script>
+$(document).ready(function n(){
+
+var urlAbsolute="http://f8rentals.com/wp-content/uploads/2015/03/IMG_0067ft.jpg?189db0" ;
+   
+//alert("hello");
+$(".k").removeClass('fa-lock').addClass('fa-unlock-alt');
+setTimeout(function newf(){
+
+ //$(this).find($(".k")).removeClass('fa-lock').addClass('fa-chevron-down');
+ //alert("hi");
+  $(".k").removeClass('fa-unlock-alt').addClass('fa-lock');
+}, 1000);
+setTimeout(n,2000);
+
+});
+</script>
+
+
+
+
+<script>
+// jQuery for page scrolling feature - requires jQuery Easing plugin
+$(function() {
+    $('a.page-scroll').bind('click', function(event) {
+      var $anchor = $(this).attr('href');
+      //alert($anchor);
+      var $anchor1=$($anchor).offset().top
+      //alert($anchor1);
+        var body = $("html, body");
+body.stop().animate({scrollTop:$anchor1}, '1000', 'swing', function() { 
+   //alert("Finished animating");
+});
+
+    });
+});</script>
+</html>
+

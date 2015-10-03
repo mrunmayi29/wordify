@@ -1,0 +1,300 @@
+body{
+background: url("{% static "images/man-s-hands-typing-on-laptop-keyboard.jpg" %}");
+overflow-x:hidden;
+
+-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  
+  font-size: 16px;
+  font-family:"Droid Serif";
+  padding-top: 70px;
+  color:#FFFFFF;
+}
+
+#type{
+background: url("{% static "images/man-s-hands-typing-on-laptop-keyboard.jpg" %}");
+overflow-x:hidden;
+-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-bottom:90px;
+  color:#FFFFFF;
+}
+#sessions{
+  color:#FFFFFF;
+  padding-top: 50px;
+  padding-bottom: 150px;
+}
+
+.footer{
+background-color:black;
+width: 100%;
+font-size: 15px;
+padding-top:40px;
+padding-left:90px;
+padding-right:40px;
+padding-bottom:40px;
+color:#FFFFFF;
+}
+.verticalLine {
+    border-left: thin solid #FFFFFF;
+    height: 150px;
+}
+#practice
+{
+   border-size:1px;
+border-style:solid;
+border-color:#FFFFFF;
+     border-radius: 25px;
+     //width:50%;
+     padding:10px;
+}
+#competition
+{
+   border-size:1px;
+border-style:solid;
+border-color:#FFFFFF;
+     border-radius: 25px;
+     width:50%;
+     padding:10px;
+}
+
+     #uname,#id_username{
+  background-image: url("{% static "images/icon_name.png" %}");
+  background-repeat: no-repeat;
+  background-position: 1px;
+  padding-left: 25px;
+  box-shadow: 0 0 10px;
+  -webkit-box-shadow:  0 0 10px;  /* for I.E */
+  -moz-box-shadow: 0 0 10px;  /* for Mozilla web browser*/
+     border-radius: 5px;
+  -webkit-border-radius: 5px; /* for I.E */
+  -moz-border-radius: 5px;  /* for Mozilla web browser*/
+}
+#pass,#id_password{
+  background-image: url("{% static "images/lock.png" %}");
+  background-repeat: no-repeat;
+  background-position: 1px;
+  padding-left: 25px;
+  //box-shadow: 0 0 10px;
+  -webkit-box-shadow:  0 0 10px;  /* for I.E */
+  -moz-box-shadow: 0 0 10px;  /* for Mozilla web browser*/
+     border-radius: 5px;
+  -webkit-border-radius: 5px; /* for I.E */
+  -moz-border-radius: 5px;  /* for Mozilla web browser*/
+}	
+ #id_picture{
+    color:#FFFFFF;
+    }
+
+input{
+  border-radius: 7px;
+  font: 20px/1;
+  text-align:left;
+  color:#00040a;
+  width: 90%;
+  height: 30px;
+  letter-spacing: 1px;
+  margin-top:5px;
+
+}
+.hf{
+  font-family:Josefin Slab;
+}
+/*.drp{
+  background-color: black;
+}*/
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+            background-color:black;
+            color:#FFFFFF;
+      }
+.p .fa
+{
+  font-size: 24px;
+}
+.lee:hover{
+    font-weight:bold;
+}
+.btn
+{
+  background-color:transparent; 
+  border-color:#FFFFFF
+}
+.btn:hover{
+  background-color: black;
+  font-size: 20px;
+  border-color: blue;
+  }
+  .btn-circle {
+    width: 70px;
+    height: 70px;
+    margin-top: 15px;
+    padding: 7px 16px;
+    border: 2px solid #fff;
+    border-radius: 100%!important;
+    font-size: 40px;
+    color: #fff;
+    background: 0 0;
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+}
+.btn-circle{
+    color: black;
+    background: #ead6a4;
+    font-size:40px;
+    border-color: black;
+
+}
+
+.btn-circle:hover,
+.btn-circle:focus {
+    outline: 0;
+    color: #FFFFFF;
+    background: black;
+    font-size:40px;
+    border-color: blue;
+}
+
+.btn-circle i.animated {
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+}
+
+.btn-circle:hover i.animated {
+    -webkit-animation-name: pulse;
+    -moz-animation-name: pulse;
+    -webkit-animation-duration: 0.75s;
+    -moz-animation-duration: 0.75s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+}
+
+.yoyoyo{
+  background-color: black;
+  padding:20%;
+}
+
+ /*@media only screen 
+}
+}
+and (min-width : 1224px) {
+ .corner{
+ margin-top:2%;
+ margin-left:5%;
+ //padding-right:5%;
+    border-size:2px;
+border-style:solid;
+border-color:#FFFFFF;
+     border-radius: 25px;
+     //width:45%;
+     height:400px;
+     vertical-align: center;
+    }
+
+}
+/* Smartphones (landscape) ----------- */
+/*@media only screen 
+and (min-width : 321px) {
+ .corner{
+ margin-top:2%;
+ margin-left:5%;
+ //padding-right:5%;
+    border-size:2px;
+border-style:solid;
+border-color:#FFFFFF;
+     border-radius: 25px;
+     width:45%;
+     height:400px;
+     vertical-align: center;
+    }
+
+}
+
+
+    @media only screen 
+and (max-width : 320px) {
+ .corner{
+ margin-top:2%;
+ margin-left:5%;
+ //padding-right:5%;
+    border-size:2px;
+border-style:solid;
+border-color:#FFFFFF;
+     border-radius: 25px;
+//width:45%;
+     height:400px;
+     vertical-align: center;
+    }
+
+}
+/* iPads (portrait and landscape) ----------- */
+/*@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+.corner{
+margin-top:2%;
+ margin-left:5%;
+ //padding-right:5%;
+    border-size:2px;
+border-style:solid;
+border-color:#FFFFFF;
+     border-radius: 25px;
+    //width:45%;
+     height:400px;
+     vertical-align: center;
+ }
+}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+.corner{
+  margin-top:2%;
+ margin-left:5%;
+ //padding-right:5%;
+    border-size:2px;
+border-style:solid;
+border-color:#FFFFFF;
+    //width:45%;
+     border-radius: 25px;
+     height:400px;
+     vertical-align: center;
+}
+}
+/* iPads (portrait) ----------- */
+/*@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+.corner{
+  margin-top:2%;
+ margin-left:5%;
+ //padding-right:5%;
+    border-size:2px;
+border-style:solid;
+border-color:#FFFFFF;
+    //width:45%;
+     border-radius: 25px;
+     height:400px;
+     vertical-align: center;
+}
+
+}*/
+
+/* Smartphones (landscape) ----------- */
+/*@media only screen 
+and (min-width : 600px) {
+ .set{
+     width:600px;
+     height:400px;
+     vertical-align: center;
+    }
+
+}*/

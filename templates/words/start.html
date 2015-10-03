@@ -1,26 +1,153 @@
 <!DOCTYPE html>
 <html>
-{% load staticfiles %}
+
 <head>
+{% load staticfiles %}
+  <meta charset="utf-8">
+    <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Wordify</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+<!--    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}" />-->
+    <link rel="stylesheet" href="{% static "font-awesome/css/font-awesome.min.css" %}" />
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+<style>
+ body{
+background: url("{% static "images/button.jpg" %}");
+background-size: cover;
+}
+    
+    .rule1 {
+    font-size:50px;
+    }
+ b{
+
+    color:#FFFFFF;
+    font-family:'Exo 2', sans-serif;
+    font-size:15px;
+    }
+input{
+  border-radius: 7px;
+  font: 20px/1;
+  text-align:left;
+  color:#00040a;
+  //width: 90%;
+  //height: 30px;
+  letter-spacing: 1px;
+  margin-top:5px;
+ border-color:black;
+
+}
+
+   .corner{
+ margin-top:2%;
+ margin-left:5%;
+ //padding-right:5%;
+    border-size:2px;
+border-style:solid;
+border-color:#FFFFFF;
+     border-radius: 25px;
+     width:90%;         //important
+     height:400px;
+     vertical-align: center;
+    }
+
+
+</style>
 </head>
+
 <body>
+<div>
 
-<h2>Wordify</h2>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <i><a class="navbar-brand hf" href="#">Wordify</a></i>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <!--<li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>-->
+              {% if user.is_authenticated %}
+     <li class="hf"><b style="padding-right:10px;" id="navbar"><i class="fa fa-child fa-2x"></i> Welcome {{user.username}} <i class="fa fa-child fa-2x"></i></b></li>
+             
+              {% else %}
+              {% endif %}
+            </ul> 
+                      </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+</div>
 
-<audio id = 'audio_word' controls = 'controls' src ="" type="audio/mpeg">
+
+<div class="row">
+
+        <div class="col-md-6">
+ 
+<div class="corner">
+ <!--<div class="rule1">
+<section id=practice class=services-wrap style="padding-bottom:30px;">-->
+ <br/>
+ <b><center class="hf">LISTEN</center></b><br/>
+<center><audio id = 'audio_word' controls = 'controls' src ="" type="audio/mpeg" style="width:50%;">
 Your browser does not support the audio element.
-</audio>
+</audio></center><br/>
 
 <form id='my_form' method = 'POST'>
-<input type = 'text' id = 'input_word' name = 'input_word' value = ''/>
-<input type="submit" id="submit_button" value='Next'/>
+<center><b><div class="hf">ENTER CORRECT SPELLING</div></b></center>
+<div><center><input type = 'text' id = 'input_word' name = 'input_word' value = '' style="padding-left:10%"/></center></div><br/>
+<div><center><button type="submit" class="btn btn-info" id="submit_button" value='Next'/><b>NEXT WORD</b></button></center></div><br/>
 <div id="myDiv"></div>
  </form>
+
+ </div></div>
+ <div class="col-md-6">
+ 
+<div class="corner">
+<br/>
+ <center><b style="margin-top:2%;" class="hf">MEANINGS</b></center>
+    <hr style="width: 70%; color:#FFFFFF; height: 2px;">
+<pre style="background-color:black; margin:10%;" class="hf"><b><div id="mone"></div></b></pre>
+
+ <br/><br/>
+ </div></div></div>
+
+
+<br/><br/>
+<div class="footer">
+<br/>
+<div class="row">
+<div>
+<br/>
+<center><ul class="list-unstyled">
+<li>Home</li>
+<li>Sessions</li>
+<li>Practice</li>
+<li>Compete</li>
+</ul></center>
+</div>
+</div>
+</div>
+  <!--</section></div></div></div>--></div>
 <script src="{% static "js/jquery-2.1.4.js" %}"></script>
 <script type = 'text/javascript'>
 var SANSWER_POST = "{% url 'sanswer_post' %}"
 </script>
 <script src="{% static "js/words-jquery.js" %}"></script>
+
+
 </body>
 </html>

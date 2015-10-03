@@ -1,12 +1,13 @@
 $(document).ready(function(){
-	function playWord(url){
+	function playWord(url,mean){
 		$("#audio_word").attr('src', url).trigger('play');
+		 $("#mone").html(mean)
 		//var a = new Audio(url);
 		//a.play();
 	}
 	//alert("something");
 	$.get(SANSWER_POST, {}, function(data) {
-		playWord(data['next']);
+		playWord(data['next'],data['mean']);
 
 	});
 	$('#my_form').submit(function(event){
@@ -23,7 +24,7 @@ $(document).ready(function(){
 			}
 			else{
 				//alert("hello");				
-				playWord(data['next']);
+				playWord(data['next'],data['mean']);
 			}
 		});
 

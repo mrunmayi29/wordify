@@ -3,12 +3,76 @@
 
 <head>
     <title>Practice Results</title>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
+   <link rel="stylesheet" href="{% static "font-awesome/css/font-awesome.min.css" %}" />
+   <link rel="stylesheet" href="{% static "css/animate.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+<style>
+body{
+//background: url("{% static "images/button.jpg" %}");
+background-size: cover;
+overflow-x:visible;
+ font-family:Droid Serif;
+}
+</style>
 </head>
 
-<body>
-
-    <div id="placeholder" style="width:600px;height:300px"></div>
+<body style="color:black">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><i style="font-family:Josefin Slab; color:#FFFFFF;">Wordify</i></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="{%static "/words/" %}" style="color:#FFFFFF;"><b>Home</b></a></li>
+             
+              
+              
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="padding-right:10px;">
+              <!--<li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>-->
+             
+                        <li><a href="{% url 'logout' %}"style="color:#FFFFFF;">Log out</a></li>      
+                       
+                      
+                          </ul> 
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+      
+      <center><h2 style="color:black;">RESULT</h2></center>
+      <hr style="color:blue; width:90%; height:4px;">
+      <div class="row">
+    <center><div id="placeholder" style="width:500px;height:300px"></div></center></div>
     <p id = 'msg'></p>
+   <!-- <div class="footer" style="margin-top:10%;">
+<br/>
+<div class="row">
+<div class="col-md-3 col-xs-12 col-md-offset-1">
+<br/>
+<ul class="list-unstyled">
+<li>Home</li>
+<li>Sessions</li>
+<li>Practice</li>
+<li>Compete</li>
+</ul>
+</div>
+<div class="col-md-7 col-xs-12">
+<h3 class="hf">WORDIFY</h3>
+<p>Wordify teaches you to remember difficult words in english. It also gives meanings for those words. You can create a group or join group and participate in competition.</p>
+
+</div>-->
     <script language="javascript" type="text/javascript" src="../../static/js/jquery-2.1.4.js"></script>
     <script language="javascript" type="text/javascript" src="../../static/js/jquery.flot.js"></script>
     <script type="text/javascript">
@@ -86,12 +150,15 @@
                 console.log(item);
                 if(item){
                     var x = item.datapoint[0];
-                    $('#msg').html('You clicked on Q.No.: '+(x)+', Correct: '+jsondata['data'][x-1][0]+
-                        ', you answered: '+jsondata['data'][x-1][1])
+                    $('#msg').html('<br/><center>You clicked on Q.No.: '+(x)+',   Correct Answer : '+jsondata['data'][x-1][0]+
+                        ',   your Answer : '+jsondata['data'][x-1][1]+'</center>')
                 }
             });
         });
 </script>
 </body>
+
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script type = 'text/javascript'></script>
 
 </html>

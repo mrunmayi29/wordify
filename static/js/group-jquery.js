@@ -189,7 +189,7 @@ $('#new_group_form').submit(function(event){
        // necessary to supply facility in order to publish
        // messages on correct groups
        $.post(GANSWER_POST, {facility:FACILITY},function (data){
-        playWord(data['next']);
+        playWord(data['next'],data['mean']);
     });
    }
    else if(msg == '#end'){
@@ -215,10 +215,10 @@ $('#new_group_form').submit(function(event){
         if(data['done']){
             //the group was deleted succesfully
             // now display the hidden fields or just refresh page
-            alert('group deleted');
+            //alert('group deleted');
         }
         else{
-            alert('not deleted');
+            //alert('group deleted');
         }
     });
   });
@@ -238,13 +238,14 @@ $('#my_form').submit(function(event){
             else{
                 //alert("hello");
                 $('#input_word').val('');               
-                playWord(data['next']);
+                playWord(data['next'],data['mean']);
             }
         });
 });
 
-function playWord(url){
+function playWord(url,mean){
     $("#audio_word").attr('src', url).trigger('play');
+     $("#mone").html(mean)
 }
 
     $('#nullify').click(function(){

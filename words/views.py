@@ -33,7 +33,12 @@ def get_url_from_word(word):
 def index(request):
 #     request.session.set_test_cookie()
     context_dict = {"words":'-'.join([x.__str__() for x in Word.objects.all()])}
-    return render(request, 'words/index.html', context_dict)
+    return render(request, 'words/home.html', context_dict)
+
+def index1(request):
+#     request.session.set_test_cookie()
+    #context_dict = {"words":'-'.join([x.__str__() for x in Word.objects.all()])}
+    return HttpResponseRedirect('/words/')
 
 def register(request):
     registration_status = False
@@ -57,31 +62,45 @@ def register(request):
             registration_status = True
         else:
             print (user_form.errors, profile_form.errors)
+        return HttpResponseRedirect('/words/login/')
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
         
-    return render(request,
+        return render(request,
                   'words/register.html',
                   {'user_form':user_form, 'profile_form':profile_form, 'registration_status':registration_status})
     
 def user_login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        print (username, password)
-        user = authenticate(username = username, password= password)
-        if user:
-            if user.is_active:
-                login(request, user)
-                return HttpResponseRedirect('/words/')
+        registration_status = False
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            print (username, password)
+            user = authenticate(username = username, password= password)
+            if user:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect('/words/')
+                else:
+                    return HttpResponse("Your wordify account is disabled!")
             else:
-                return HttpResponse("Your wordify account is disabled!")
+                print("Invalid login credentials:", username, password)
+                return HttpResponse("invalid login details suppplied. try again!")
         else:
-            print("Invalid login credentials:", username, password)
-            return HttpResponse("invalid login details suppplied. try again!")
-    else:
-        return render(request, 'words/login.html',{})
+            user_form = UserForm()
+            profile_form = UserProfileForm()
+            user_form.fields['password'].widget.attrs.update({
+            'placeholder': 'Password'
+        })
+            user_form.fields['username'].widget.attrs.update({
+            'placeholder': 'Username'
+        })
+            user_form.fields['email'].widget.attrs.update({
+            'placeholder': 'E-mail'
+        })
+            return render(request, 'words/login.html',{'user_form':user_form, 'profile_form':profile_form, 'registration_status':registration_status})
+
 @login_required
 def user_logout(request):
     logout(request)
@@ -120,7 +139,7 @@ def start_single(request):
 @csrf_exempt
 def sanswer_post(request):
     print "in the start"
-    response_dict = {'done':False, 'next':'404'}
+    response_dict = {'done':False, 'next':'404','mean':'404'}
     wordpks = request.session.get('wordpks')
     usr=request.user        #username
     #print "username "+usr.username
@@ -128,6 +147,7 @@ def sanswer_post(request):
         wordpks = wordpks.split('-')
         print str(wordpks)
         ci = int(request.session.get('ci'))
+
 
 
         #print ("nextword:",nextword)
@@ -138,6 +158,7 @@ def sanswer_post(request):
         #print("inputWord",request.POST['inputWord'])
         cindex1=str(wordpks[ci-1])
         print "cindex "+cindex1
+
         correct_word=str(Word.objects.get(pk=cindex1))
         print "correct_word "+str(correct_word)
         input_word=request.POST['inputWord']
@@ -176,9 +197,14 @@ def sanswer_post(request):
         nextword = wordpks[ci]          #cindex
         nextword = str(Word.objects.get(pk=nextword))        #correct_word
         request.session['ci']= ci+1
+
         #response_dict['next']='/static/audio/w'+hashlib.sha1(nextword).hexdigest()+'.mp3'
         print ("serving get request for 1st word")
-
+    newob=Word.objects.get(word=nextword)
+    print newob.mean
+    mean=newob.mean
+    response_dict['mean']=str(mean)
+    print response_dict['mean']
     response_dict['next']=get_url_from_word(nextword)
     print("now sending json as",response_dict)
     return JsonResponse(response_dict)
@@ -403,6 +429,7 @@ def ganswer_post(request):
     print "current word"
     print wrd.word          #correct words
     correct_ans=wrd.word
+    meani=wrd.mean
     request.session['prev_word']=correct_ans #to store current word
     ans=request.POST.get('input_word')
     print ans
@@ -411,6 +438,7 @@ def ganswer_post(request):
     request.session['wordpks'] = '-'.join(wordpks)
     wordurl = get_url_from_word(str(Word.objects.get(pk=nextpk)))
     response_dict['next'] = wordurl
+    response_dict['mean']=meani
     return JsonResponse(response_dict)
 
 
